@@ -11,7 +11,7 @@
     $query->execute();
 
     $query->store_result();
-    $query->bind_result($id, $username, $hashed_password, $first_name, $last_name);
+    $query->bind_result($id, $username, $hashed_password);
     $query->fetch();
 
     $num_rows = $query->num_rows();
