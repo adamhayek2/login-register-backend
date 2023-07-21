@@ -3,6 +3,7 @@
 
 
     $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
     $check_username = $mysqli->prepare('select username from users where username=?');
@@ -13,8 +14,8 @@
 
     if ( $check_username->num_rows() == 0) {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $query = $mysqli->prepare('insert into users(username,password) values(?,?)');
-        $query->bind_param('ss', $username, $hashed_password);
+        $query = $mysqli->prepare('insert into users(username, email, password) values(?, ?, ?)');
+        $query->bind_param('sss', $username, $email, $hashed_password);
         $query->execute();
 
         $response['status'] = "success";
