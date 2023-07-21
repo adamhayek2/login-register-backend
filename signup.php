@@ -2,9 +2,9 @@
     include('connection.php');
     
 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $username = isset($_POST['username']);
+    $email = isset($_POST['email']);
+    $password = isset($_POST['password']);
 
     $check_username = $mysqli->prepare('select username from users where username=?');
     $check_username->bind_param('s', $username);

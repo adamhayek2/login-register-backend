@@ -1,8 +1,8 @@
 <?php
     include('connection.php');
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = isset($_POST['username']);
+    $password = isset($_POST['password']);
 
     $query = $mysqli->prepare('select id,username,password
         from users 
